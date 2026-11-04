@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="text-center py-5 mb-3">
+  <h1 class="display-6 fw-semibold">Learning that adapts to how you learn</h1>
+  <p class="lead col-lg-8 mx-auto">AdaptiveLearn AI adjusts question difficulty, suggests your next topic and recommends a learning format based on your own quiz results. You choose every accessibility setting yourself.</p>
+  <div class="d-flex gap-2 justify-content-center flex-wrap">
+    {% if user %}
+      <a class="btn btn-primary btn-lg" href="{{ url_for('main.dashboard') }}">Go to my dashboard</a>
+    {% else %}
+      <a class="btn btn-primary btn-lg" href="{{ url_for('main.register') }}">Create a free account</a>
+      <a class="btn btn-outline-secondary btn-lg" href="{{ url_for('main.library') }}">Browse the library</a>
+    {% endif %}
+  </div>
+</section>
+<div class="row g-4">
+  {% for title, text in [
+    ("Adaptive quizzes", "Difficulty moves up or down with your accuracy, and every answer comes with an explanation."),
+    ("Three ways to learn", "Read, listen, or explore a visual lesson, and switch whenever you like."),
+    ("Accessibility first", "Dyslexia-friendly font, text size, high contrast, reduced motion, focus mode, and speech input and output."),
+    ("Explore and practice", "Search topics, filter by subject or progress, and see your quiz progress as you learn.")
+  ] %}
+  <div class="col-md-6">
+    <div class="card al-card h-100"><div class="card-body">
+      <h2 class="h5">{{ title }}</h2>
+      <p class="mb-0">{{ text }}</p>
+    </div></div>
+  </div>
+  {% endfor %}
+</div>
+<p class="small text-muted mt-4">Demo build. The ML models are trained on synthetic data. They show the pipeline works and are not evidence of real-world effectiveness.</p>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Create account' if mode == 'register' else 'Log in' }} · AdaptiveLearn AI{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <div class="card al-card"><div class="card-body p-4">
+      <h1 class="h4 mb-3">{{ 'Create your account' if mode == 'register' else 'Log in' }}</h1>
+      <form method="post">
+        {% if mode == 'register' %}
+        <div class="mb-3">
+          <label class="form-label" for="name">Name</label>
+          <input class="form-control" id="name" name="name" required autocomplete="name">
+        </div>
+        {% endif %}
+        <div class="mb-3">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="password">Password{% if mode == 'register' %} (at least 8 characters){% endif %}</label>
+          <input class="form-control" type="password" id="password" name="password" required
+                 minlength="{{ 8 if mode == 'register' else 1 }}"
+                 autocomplete="{{ 'new-password' if mode == 'register' else 'current-password' }}">
+        </div>
+        {% if mode == 'register' %}
+        <div class="mb-3">
+          <label class="form-label" for="preferred_format">Preferred learning format</label>
+          <select class="form-select" id="preferred_format" name="preferred_format">
+            <option value="text">Text</option>
+            <option value="audio">Audio</option>
+            <option value="visual">Visual</option>
+          </select>
+          <div class="form-text">You can change this and all accessibility settings at any time.</div>
+        </div>
+        {% endif %}
+        <button class="btn btn-primary w-100" type="submit">{{ 'Create account' if mode == 'register' else 'Log in' }}</button>
+      </form>
+      <p class="small mt-3 mb-0">
+        {% if mode == 'register' %}Already registered? <a href="{{ url_for('main.login') }}">Log in</a>
+        {% else %}New here? <a href="{{ url_for('main.register') }}">Create an account</a>{% endif %}
+      </p>
+    </div></div>
+  </div>
+</div>
+{% endblock %}

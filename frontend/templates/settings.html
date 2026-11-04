@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Accessibility · AdaptiveLearn AI{% endblock %}
+{% block content %}
+<h1 class="h3 mb-2">Accessibility and learning settings</h1>
+<p class="text-muted">Nothing here is diagnosed or assumed. Choose what works for you. Changes apply immediately, are saved in this browser, and are saved to your account when you are logged in.</p>
+
+<div class="card al-card"><div class="card-body">
+  {% set toggles = [
+    ("dyslexia_font", "Dyslexia-friendly font", "A wider, letter-spaced typeface with more line height."),
+    ("high_contrast", "High contrast", "Stronger contrast between text and background."),
+    ("reduced_motion", "Reduced motion", "Turns off transitions and animations."),
+    ("focus_mode", "Focus mode", "Narrows the reading column to reduce distraction."),
+    ("tts_enabled", "Read-aloud buttons", "Shows text-to-speech controls on lesson pages.")
+  ] %}
+  {% for key, label, help in toggles %}
+  <div class="form-check form-switch mb-3">
+    <input class="form-check-input" type="checkbox" id="s-{{ key }}" data-setting="{{ key }}" {% if p[key] %}checked{% endif %}>
+    <label class="form-check-label" for="s-{{ key }}">{{ label }}</label>
+    <div class="form-text">{{ help }}</div>
+  </div>
+  {% endfor %}
+
+  <div class="mb-3">
+    <label class="form-label" for="s-font_scale">Text size</label>
+    <select class="form-select" id="s-font_scale" data-setting="font_scale">
+      <option value="1" {% if p.font_scale == 1.0 %}selected{% endif %}>Standard</option>
+      <option value="1.2" {% if p.font_scale == 1.2 %}selected{% endif %}>Larger</option>
+      <option value="1.4" {% if p.font_scale == 1.4 %}selected{% endif %}>Largest</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="s-preferred_format">Preferred learning format</label>
+    <select class="form-select" id="s-preferred_format" data-setting="preferred_format">
+      {% for f in formats %}
+      <option value="{{ f }}" {% if p.preferred_format == f %}selected{% endif %}>{{ f|capitalize }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <button type="button" class="btn btn-outline-secondary" data-reset>Reset to defaults</button>
+  <p class="small text-muted mt-3 mb-0">Keyboard: use Tab to move between controls and Space to toggle a switch. Speech input works in browsers that support it.</p>
+</div></div>
+{% endblock %}

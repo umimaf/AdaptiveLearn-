@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}{{ t.title }} · AdaptiveLearn AI{% endblock %}
+{% block content %}
+<nav aria-label="Breadcrumb"><a href="{{ url_for('main.library') }}">Library</a> / {{ t.subject_name }}</nav>
+<h1 class="h2 mt-2">{{ t.title }}</h1>
+<p class="text-muted">Level {{ t.difficulty_level }} · Suggested format: <strong>{{ default_format }}</strong>
+  <span class="small">({{ format_source|replace('_', ' ') }})</span></p>
+
+<section class="card al-card mb-4" aria-labelledby="lesson-h">
+  <div class="card-body">
+    <h2 id="lesson-h" class="h5">Lesson</h2>
+    <div class="btn-group mb-3 flex-wrap" role="group" aria-label="Choose learning format">
+      {% for f in formats %}
+      <button type="button" class="btn btn-outline-primary btn-sm format-tab{% if f == default_format %} active{% endif %}"
+              data-format-tab="{{ f }}" aria-pressed="{{ 'true' if f == default_format else 'false' }}">{{ f|capitalize }}</button>
+      {% endfor %}
+    </div>
+
+    <div data-format-panel="text" id="panel-text" {% if default_format != 'text' %}hidden{% endif %}>
+      <h3 class="h6">Simple explanation</h3>
+      <p>{{ t.simple_text }}</p>
+      <h3 class="h6">Detailed explanation</h3>
+      <p>{{ t.detailed_text }}</p>
+      <h3 class="h6">Real-world example</h3>
+      <p>{{ t.example_text }}</p>
+      <button type="button" class="btn btn-sm btn-outline-secondary" data-speak-target="#panel-text">Read aloud</button>
+    </div>
+
+    <div data-format-panel="audio" {% if default_format != 'audio' %}hidden{% endif %}>
+      <p>Listen to the lesson with your browser's text-to-speech voice.</p>
+      <button type="button" class="btn btn-sm btn-outline-secondary" data-speak-target="#audio-script">Play lesson</button>
+      <div id="audio-script" class="visually-hidden">{{ t.simple_text }} {{ t.detailed_text }} For example: {{ t.example_text }}</div>
+    </div>
+
+    <div data-format-panel="visual" {% if default_format != 'visual' %}hidden{% endif %}>
+      {% set illustrations = {
+        'Python Programming': 'python-learning.svg',
+        'Database Management Systems': 'database-learning.svg',
+        'Data Structures and Algorithms': 'algorithms-learning.svg'
+      } %}
+      <figure class="lesson-visual-wrap">
+        <img class="lesson-visual" src="{{ url_for('static', filename='images/' ~ illustrations.get(t.subject_name, 'python-learning.svg')) }}"
+             alt="Illustration for {{ t.title }}">
+        <figcaption class="small text-muted mt-2">Lesson illustration: {{ t.visual_text }}</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="card al-card" id="quiz-section" aria-labelledby="quiz-h" data-total-questions="{{ questions|length }}">
+  <div class="card-body">
+    <h2 id="quiz-h" class="h5">Practice quiz</h2>
+    <p class="small text-muted">Difficulty level {{ difficulty }}, set from {{ difficulty_source|replace('_', ' ') }}.</p>
+    <div class="mb-4" id="quiz-progress-wrap" {% if not questions %}hidden{% endif %}>
+      <div class="d-flex justify-content-between small mb-1">
+        <span id="quiz-progress-label">0 of {{ questions|length }} answered</span>
+        <span id="quiz-score">Score: 0</span>
+      </div>
+      <div class="progress" role="progressbar" aria-label="Quiz completion" aria-valuenow="0"
+           aria-valuemin="0" aria-valuemax="{{ questions|length }}">
+        <div class="progress-bar" id="quiz-progress-bar" style="width: 0%"></div>
+      </div>
+    </div>
+    {% for q in questions %}
+    <fieldset class="quiz-q mb-4" data-qid="{{ q.id }}">
+      <legend class="h6">{{ loop.index }}. {{ q.prompt }}
+        <span class="badge bg-light text-dark">Level {{ q.difficulty }}</span></legend>
+      <div class="d-grid gap-2">
+        {% for opt in q.options %}
+        <button type="button" class="btn btn-outline-secondary text-start quiz-option" data-answer="{{ opt }}">{{ opt }}</button>
+        {% endfor %}
+      </div>
+      <div class="quiz-feedback mt-2" role="status" aria-live="polite"></div>
+    </fieldset>
+    {% else %}
+      <p>No questions are available for this topic yet.</p>
+    {% endfor %}
+    <p class="fw-semibold mt-3 mb-0" id="quiz-complete" role="status" hidden></p>
+    <p class="small mb-0" id="topic-status" aria-live="polite"></p>
+  </div>
+</section>
+{% endblock %}

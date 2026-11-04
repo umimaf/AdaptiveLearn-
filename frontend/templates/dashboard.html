@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · AdaptiveLearn AI{% endblock %}
+{% block content %}
+<h1 class="h3">Hello, {{ user['name'] }}</h1>
+<p class="text-muted">{{ d.goal }}</p>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-4"><div class="card al-card stat"><div class="card-body">
+    <div class="small text-muted">Topics completed</div>
+    <div class="h4 mb-0">{{ d.stats.completed }} / {{ d.stats.total }}</div>
+  </div></div></div>
+  <div class="col-md-4"><div class="card al-card stat"><div class="card-body">
+    <div class="small text-muted">Quiz accuracy</div>
+    <div class="h4 mb-0">{% if d.stats.accuracy is not none %}{{ d.stats.accuracy }}%{% else %}No quizzes yet{% endif %}</div>
+  </div></div></div>
+  <div class="col-md-4"><div class="card al-card stat"><div class="card-body">
+    <div class="small text-muted">Questions answered</div>
+    <div class="h4 mb-0">{{ d.stats.attempts }}</div>
+  </div></div></div>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-7">
+    <section class="card al-card mb-4"><div class="card-body">
+      <h2 class="h5">Recommended for you</h2>
+      <ul class="list-group list-group-flush">
+        {% for r in d.recommendations %}
+        <li class="list-group-item px-0 d-flex justify-content-between align-items-start">
+          <div>
+            <a href="{{ url_for('main.topic', topic_id=r.topic_id) }}">{{ r.title }}</a>
+            <div class="small text-muted">{{ r.type|replace('_', ' ') }} · source: {{ r.source|replace('_', ' ') }}</div>
+          </div>
+          {% if r.score is not none %}<span class="badge bg-light text-dark">{{ '%.2f'|format(r.score) }}</span>{% endif %}
+        </li>
+        {% else %}
+        <li class="list-group-item px-0">Complete a quiz to get personalised recommendations.</li>
+        {% endfor %}
+      </ul>
+    </div></section>
+
+    <section class="card al-card mb-4"><div class="card-body">
+      <h2 class="h5">Topics to revise</h2>
+      {% for t in d.revision %}<p class="mb-1"><a href="{{ url_for('main.topic', topic_id=t.id) }}">{{ t.title }}</a></p>
+      {% else %}<p class="mb-0 text-muted">Nothing flagged for revision.</p>{% endfor %}
+    </div></section>
+
+    <section class="card al-card"><div class="card-body">
+      <h2 class="h5">Strong topics</h2>
+      {% for t in d.strong %}<p class="mb-1">{{ t.title }}</p>
+      {% else %}<p class="mb-0 text-muted">Mastered topics will appear here.</p>{% endfor %}
+    </div></section>
+  </div>
+
+  <div class="col-lg-5">
+    <section class="card al-card mb-4"><div class="card-body">
+      <h2 class="h5">Your learning profile</h2>
+      {% if d.profile %}<p>Pattern group (K-Means): <strong>{{ d.profile }}</strong></p>{% else %}<p class="text-muted">Available once the models are trained and you have answered questions.</p>{% endif %}
+      {% if d.support.probability is not none %}
+        <p class="mb-1">Support signal: <strong>{{ (d.support.probability * 100)|round|int }}%</strong>
+          <span class="small text-muted">({{ d.support.source|replace('_', ' ') }})</span></p>
+        <p class="small text-muted">This is a prompt to review a topic, not a diagnosis.</p>
+      {% else %}
+        <p class="text-muted">Not enough quiz data yet for a support signal.</p>
+      {% endif %}
+      <p class="mb-0">Suggested format: <strong>{{ d.format.value|capitalize }}</strong>
+        <span class="small text-muted">({{ d.format.source|replace('_', ' ') }})</span></p>
+    </div></section>
+
+    <section class="card al-card"><div class="card-body">
+      <h2 class="h5">Mastery by topic</h2>
+      {% if d.chart.labels %}
+        <canvas id="mastery-chart" height="220" role="img" aria-label="Bar chart of mastery percentage for each topic you have started"></canvas>
+      {% else %}
+        <p class="text-muted mb-0">Answer a few questions to see your progress chart.</p>
+      {% endif %}
+    </div></section>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+<script>
+  (function () {
+    const data = {{ d.chart|tojson }};
+    const el = document.getElementById("mastery-chart");
+    if (el && window.Chart && data.labels.length) {
+      new Chart(el, {
+        type: "bar",
+        data: { labels: data.labels, datasets: [{ label: "Mastery (%)", data: data.values, backgroundColor: "#7fa6c9" }] },
+        options: { scales: { y: { min: 0, max: 100 } }, plugins: { legend: { display: false } } }
+      });
+    }
+  })();
+</script>
+{% endblock %}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" aria-labelledby="title desc">
+  <title id="title">Python learning illustration</title>
+  <desc id="desc">A code card sends values through a simple Python learning flow.</desc>
+  <rect width="720" height="320" rx="24" fill="#eef6fa"/>
+  <rect x="38" y="46" width="270" height="228" rx="18" fill="#fff" stroke="#bfd3df" stroke-width="3"/>
+  <circle cx="66" cy="73" r="7" fill="#e58a76"/><circle cx="91" cy="73" r="7" fill="#e5bd69"/><circle cx="116" cy="73" r="7" fill="#79b69a"/>
+  <text x="64" y="121" font-family="monospace" font-size="21" fill="#496276">count = 42</text>
+  <text x="64" y="161" font-family="monospace" font-size="21" fill="#496276">name = "Asha"</text>
+  <text x="64" y="220" font-family="monospace" font-size="18" fill="#2f6f8f">print(count)</text>
+  <path d="M330 160h78" fill="none" stroke="#2f6f8f" stroke-width="8" stroke-linecap="round"/>
+  <path d="m391 141 24 19-24 19" fill="none" stroke="#2f6f8f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="434" y="70" width="244" height="82" rx="18" fill="#fff" stroke="#bfd3df" stroke-width="3"/>
+  <text x="556" y="105" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#5b6b7a">value</text>
+  <text x="556" y="134" text-anchor="middle" font-family="monospace" font-size="24" font-weight="700" fill="#2f6f8f">42</text>
+  <rect x="434" y="176" width="244" height="82" rx="18" fill="#dcefe8"/>
+  <text x="556" y="210" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#477461">Python runs</text>
+  <text x="556" y="239" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="700" fill="#2f6f8f">one step at a time</text>
+</svg>

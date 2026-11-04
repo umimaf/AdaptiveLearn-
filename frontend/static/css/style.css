@@ -1,0 +1,92 @@
+/* Base theme: calm, low-saturation colours with clear spacing. */
+:root {
+  --al-bg: #f7f9fb;
+  --al-text: #1f2d3a;
+  --al-muted: #5b6b7a;
+  --al-primary: #2f6f8f;
+  --al-heading: #234f68;
+  --al-accent: #397f78;
+  --al-card: #ffffff;
+  --al-border: #dfe6ec;
+}
+body {
+  background: var(--al-bg);
+  color: var(--al-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+::selection { background: #d5ece8; color: #173c50; }
+h1, h2, h3, h4, h5, h6 { color: var(--al-heading); }
+a:not(.topic-link) { color: var(--al-primary); }
+a:not(.topic-link):hover { color: var(--al-accent); }
+.navbar-brand { color: var(--al-heading) !important; }
+.form-label, .form-check-label { color: var(--al-heading); font-weight: 600; }
+.text-muted { color: var(--al-muted) !important; }
+.al-nav { background: var(--al-card); border-bottom: 1px solid var(--al-border); }
+.al-card {
+  background: var(--al-card);
+  border: 1px solid var(--al-border);
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.topic-link { color: inherit; text-decoration: none; transition: transform 0.15s ease; }
+.topic-link:hover { transform: translateY(-2px); }
+.topic-card[hidden], .library-subject[hidden] { display: none !important; }
+.topic-link .progress { height: 0.5rem; }
+.lesson-visual-wrap { margin: 0; }
+.lesson-visual {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  border: 1px solid var(--al-border);
+  border-radius: 12px;
+  background: #f2f7fa;
+}
+.quiz-option { transition: background-color 0.15s ease, border-color 0.15s ease; }
+.btn-primary { background-color: var(--al-primary); border-color: var(--al-primary); }
+.stat .h4 { color: var(--al-primary); }
+.badge.status-mastered { background: #2e7d5b; color: #fff; }
+.badge.status-needs_revision { background: #b5543c; color: #fff; }
+.badge.status-in_progress { background: #b7791f; color: #fff; }
+.badge.status-not_started { background: #6b7a88; color: #fff; }
+.tutor-reply { white-space: pre-wrap; min-height: 1.5rem; }
+.quiz-option:disabled { opacity: 0.85; }
+
+/* Keyboard and screen-reader support */
+.skip-link { position: absolute; left: -999px; top: 0; }
+.skip-link:focus { left: 1rem; top: 1rem; z-index: 1000; background: #fff; padding: 0.5rem 1rem; border: 2px solid var(--al-primary); }
+:focus-visible { outline: 3px solid #1a5fb4; outline-offset: 2px; }
+
+/* Accessibility settings (applied as classes on <body>) */
+.dyslexia-font,
+.dyslexia-font * {
+  font-family: "OpenDyslexic", "Comic Sans MS", "Trebuchet MS", sans-serif !important;
+  letter-spacing: 0.04em;
+  word-spacing: 0.12em;
+  line-height: 1.9;
+}
+.high-contrast {
+  --al-bg: #000;
+  --al-text: #fff;
+  --al-muted: #e6e6e6;
+  --al-heading: #fff;
+  --al-accent: #ffd500;
+  --al-card: #000;
+  --al-border: #fff;
+  --al-primary: #ffd500;
+}
+.high-contrast .card, .high-contrast .list-group-item, .high-contrast .navbar { background: #000 !important; color: #fff !important; border-color: #fff !important; }
+.high-contrast h1, .high-contrast h2, .high-contrast h3, .high-contrast h4,
+.high-contrast h5, .high-contrast h6, .high-contrast .form-label,
+.high-contrast .form-check-label, .high-contrast .navbar-brand { color: #fff !important; }
+.high-contrast .btn-primary { background: #ffd500; border-color: #ffd500; color: #000; }
+.high-contrast a { color: #8fd3ff; }
+.high-contrast .btn-outline-secondary, .high-contrast .btn-outline-primary { color: #fff; border-color: #fff; }
+.high-contrast .form-control, .high-contrast .form-select { background: #000; color: #fff; border-color: #fff; }
+.high-contrast .lesson-visual { background: #fff; }
+.reduced-motion *, .reduced-motion *::before, .reduced-motion *::after {
+  transition: none !important;
+  animation: none !important;
+  scroll-behavior: auto !important;
+}
+.focus-mode main { max-width: 680px; margin: 0 auto; }

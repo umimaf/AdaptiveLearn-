@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" aria-labelledby="title desc">
+  <title id="title">Database learning illustration</title>
+  <desc id="desc">Two related tables connect student records to enrolments.</desc>
+  <rect width="720" height="320" rx="24" fill="#eef6fa"/>
+  <text x="175" y="48" text-anchor="middle" font-family="sans-serif" font-size="21" font-weight="700" fill="#2f5368">STUDENTS</text>
+  <text x="545" y="48" text-anchor="middle" font-family="sans-serif" font-size="21" font-weight="700" fill="#2f5368">ENROLMENTS</text>
+  <rect x="52" y="65" width="245" height="202" rx="14" fill="#fff" stroke="#91b4c6" stroke-width="3"/>
+  <rect x="422" y="65" width="245" height="202" rx="14" fill="#fff" stroke="#91b4c6" stroke-width="3"/>
+  <path d="M52 112h245M422 112h245M52 164h245M422 164h245M52 216h245M422 216h245" stroke="#d8e4ea" stroke-width="2"/>
+  <text x="72" y="100" font-family="monospace" font-size="17" font-weight="700" fill="#2f6f8f">student_id · PK</text>
+  <text x="72" y="151" font-family="monospace" font-size="17" fill="#496276">name</text>
+  <text x="72" y="203" font-family="monospace" font-size="17" fill="#496276">Asha</text>
+  <text x="442" y="100" font-family="monospace" font-size="17" font-weight="700" fill="#2f6f8f">enrol_id · PK</text>
+  <text x="442" y="151" font-family="monospace" font-size="17" fill="#2f6f8f">student_id · FK</text>
+  <text x="442" y="203" font-family="monospace" font-size="17" fill="#496276">course_id</text>
+  <path d="M298 150h120" stroke="#2f6f8f" stroke-width="5" stroke-dasharray="9 7"/>
+  <circle cx="298" cy="150" r="7" fill="#2f6f8f"/><circle cx="418" cy="150" r="7" fill="#2f6f8f"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" role="img" aria-labelledby="title desc">
+  <title id="title">Data structures and algorithms illustration</title>
+  <desc id="desc">A sorted array narrows by halves to find a target value.</desc>
+  <rect width="720" height="320" rx="24" fill="#eef6fa"/>
+  <text x="360" y="52" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="700" fill="#2f5368">Find the target by narrowing the range</text>
+  <g font-family="monospace" font-size="23" text-anchor="middle">
+    <rect x="75" y="102" width="90" height="70" rx="12" fill="#fff" stroke="#91b4c6" stroke-width="3"/><text x="120" y="147" fill="#496276">2</text>
+    <rect x="165" y="102" width="90" height="70" rx="12" fill="#fff" stroke="#91b4c6" stroke-width="3"/><text x="210" y="147" fill="#496276">4</text>
+    <rect x="255" y="102" width="90" height="70" rx="12" fill="#dcefe8" stroke="#6fa78f" stroke-width="3"/><text x="300" y="147" fill="#477461">6</text>
+    <rect x="345" y="102" width="90" height="70" rx="12" fill="#fbe8d9" stroke="#d98b5f" stroke-width="4"/><text x="390" y="147" fill="#9b5631">8</text>
+    <rect x="435" y="102" width="90" height="70" rx="12" fill="#fff" stroke="#91b4c6" stroke-width="3"/><text x="480" y="147" fill="#496276">10</text>
+    <rect x="525" y="102" width="90" height="70" rx="12" fill="#fff" stroke="#91b4c6" stroke-width="3"/><text x="570" y="147" fill="#496276">12</text>
+  </g>
+  <path d="M120 210h450" stroke="#a9c4d2" stroke-width="4" stroke-linecap="round"/>
+  <path d="M390 197v28" stroke="#d47a49" stroke-width="5"/>
+  <text x="390" y="260" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="700" fill="#9b5631">Target found: 8</text>
+  <text x="390" y="290" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#5b6b7a">Sorted values let each step skip half the range</text>
+</svg>
