@@ -1,126 +1,529 @@
 # AdaptiveLearn AI
+### An AI-Based Adaptive Learning Platform for Students with Disabilities
 
-An adaptive learning platform for students with different learning needs. It adjusts
-question difficulty, suggests the next topic and recommends a learning format from each
-student's own quiz results. Accessibility settings are always chosen by the student, never
-diagnosed.
+## 1. Project Overview
 
-## Quick start
+AdaptiveLearn AI is a Python and Machine Learning-based educational platform designed to provide personalised and accessible learning experiences for students with disabilities.
+
+Traditional learning platforms often follow a standard approach that may not accommodate the different learning requirements of every student. AdaptiveLearn AI addresses this limitation by adapting learning content, difficulty levels, and recommendations according to individual student performance and preferences.
+
+The platform analyses learning activity, quiz results, topic completion, and learning preferences to recommend suitable learning resources. It also provides accessibility customisation options to help students access educational content in a comfortable and convenient way.
+
+The primary objective is to make digital education more inclusive, accessible, and personalised.
+
+## 2. Problem Statement
+
+Students with disabilities may encounter various challenges while using traditional digital learning platforms.
+
+Some common challenges include:
+
+- Limited accessibility options in educational applications.
+- Difficulty understanding complex learning materials.
+- Lack of personalised learning recommendations.
+- Limited availability of alternative learning formats.
+- Standardised assessments that may not suit individual learning requirements.
+- Difficulty tracking individual learning progress.
+
+Therefore, an adaptive learning platform is required to provide flexible content delivery and personalised educational support.
+
+## 3. Proposed Solution
+
+AdaptiveLearn AI provides an intelligent learning environment that adapts to the individual needs and preferences of students.
+
+The platform uses Machine Learning techniques to analyse student learning patterns and recommend suitable learning materials. It also provides accessibility settings, interactive assessments, and progress monitoring.
+
+The system aims to improve the learning experience by allowing students to access educational content through different formats and at a suitable difficulty level.
+
+## 4. Objectives
+
+- Develop an accessible digital learning platform.
+- Provide personalised learning recommendations using Machine Learning.
+- Adapt content difficulty according to student performance.
+- Support different learning preferences.
+- Provide accessibility customisation options.
+- Improve understanding through interactive quizzes and feedback.
+- Monitor and analyse student learning progress.
+- Promote inclusive and independent learning.
+
+## 5. Key Features
+
+### 5.1 Personalised Learning
+
+The platform analyses student learning activity and provides personalised learning recommendations based on:
+
+- Quiz scores.
+- Number of attempts.
+- Topic completion.
+- Time spent on learning activities.
+- Previous performance.
+- Learning format preferences.
+
+Based on this information, the system recommends suitable learning materials and difficulty levels.
+
+### 5.2 Accessibility Customisation
+
+Students can customise the learning interface according to their individual requirements.
+
+Accessibility options include:
+
+- Adjustable font size.
+- Dyslexia-friendly font options.
+- High-contrast mode.
+- Customisable text and background colours.
+- Line and letter spacing.
+- Text-to-speech support.
+- Speech-to-text support.
+- Keyboard-friendly navigation.
+
+### 5.3 Multiple Learning Formats
+
+The platform supports different learning formats to make educational content easier to access and understand.
+
+These may include:
+
+- Text-based explanations.
+- Audio-based learning.
+- Images and illustrations.
+- Educational videos.
+- Captions and transcripts where available.
+
+Students can use the available formats according to their preferences.
+
+### 5.4 Adaptive Quiz System
+
+The platform provides interactive quizzes to evaluate student understanding.
+
+Features include:
+
+- Topic-based assessments.
+- Different difficulty levels.
+- Instant feedback.
+- Automatic score calculation.
+- Explanation of incorrect answers.
+- Learning recommendations based on quiz performance.
+
+### 5.5 Learning Progress Dashboard
+
+The dashboard provides an overview of student learning activity and performance.
+
+It includes:
+
+- Completed topics.
+- Quiz scores.
+- Learning progress.
+- Performance summaries.
+- Areas requiring additional practice.
+- Recommended learning topics.
+
+### 5.6 Learning Assistant
+
+The learning assistant provides additional academic support by helping students understand educational concepts.
+
+It can support:
+
+- Simple explanations of difficult topics.
+- Topic summaries.
+- Examples.
+- Answers to learning-related questions.
+- Explanations of incorrect quiz answers.
+
+The availability of these capabilities depends on the AI integration used in the application.
+
+## 6. Machine Learning Implementation
+
+Machine Learning is a core component of AdaptiveLearn AI. It analyses student learning activity and generates personalised recommendations.
+
+### Input Parameters
+
+| Parameter | Description |
+|---|---|
+| Quiz Score | Performance in assessments |
+| Attempts | Number of attempts made |
+| Time Spent | Time spent studying a topic |
+| Topic Completion | Completion status of learning material |
+| Incorrect Answers | Number of incorrect responses |
+| Learning Preference | Preferred learning format |
+| Previous Performance | Earlier assessment results |
+
+### Algorithms Considered
+
+**K-Means Clustering**
+
+Used to explore and group similar learning activity patterns.
+
+**Random Forest**
+
+Can be used to predict learning categories or suitable difficulty levels when appropriate training data is available.
+
+**Content-Based Recommendation**
+
+Recommends learning materials based on student preferences and previous learning activity.
+
+**Rule-Based Recommendation**
+
+Provides initial recommendations based on predefined learning conditions.
+
+### Machine Learning Workflow
+
+1. Collect student learning activity with appropriate consent.
+2. Preprocess and clean the collected data.
+3. Extract relevant learning features.
+4. Train and evaluate the selected ML model.
+5. Save the trained model using Joblib.
+6. Integrate the model with the Python backend.
+7. Generate personalised learning recommendations.
+8. Update recommendations based on new learning activity.
+
+The system provides educational recommendations and does not diagnose disabilities or determine a student's intellectual ability.
+
+## 7. Technology Stack
+
+| Category | Technologies |
+|---|---|
+| Programming Language | Python |
+| Backend Framework | Flask |
+| Frontend | HTML, CSS, JavaScript, Bootstrap |
+| Machine Learning | Scikit-learn |
+| Data Processing | Pandas, NumPy |
+| Data Visualisation | Matplotlib, Chart.js |
+| Database | SQLite / MySQL |
+| Model Persistence | Joblib |
+| OCR | Tesseract OCR |
+| PDF Processing | PyMuPDF / PyPDF2 |
+| Text-to-Speech | gTTS / Web Speech API |
+| Version Control | Git and GitHub |
+| Deployment | Render / Railway |
+
+*The table should reflect the technologies actually used in the final implementation.*
+
+## 8. System Architecture
+
+The application follows a modular architecture consisting of the user interface, Python backend, Machine Learning component, database, and learning modules.
+
+```text
+              STUDENT
+                 |
+                 v
+          USER INTERFACE
+          HTML / CSS / JS
+                 |
+                 v
+          PYTHON BACKEND
+              FLASK
+                 |
+       +---------+---------+
+       |         |         |
+       v         v         v
+   USER       LEARNING   ACCESSIBILITY
+  MODULE      MODULE      MODULE
+       |         |         |
+       v         v         v
+   DATABASE   ML ENGINE  CONTENT
+       |         |       FORMATS
+       |         v
+       |    RECOMMENDATION
+       |         |
+       +---------+
+                 |
+                 v
+         PERSONALIZED CONTENT
+                 |
+                 v
+          STUDENT DASHBOARD
+```
+
+## 9. Project Structure
+
+```text
+AdaptiveLearn-AI/
+│
+├── app.py
+├── config.py
+├── requirements.txt
+├── README.md
+│
+├── dataset/
+│   └── student_learning_data.csv
+│
+├── models/
+│   └── adaptive_model.pkl
+│
+├── ml/
+│   ├── preprocessing.py
+│   ├── train_model.py
+│   ├── predict.py
+│   └── recommendation.py
+│
+├── database/
+│   ├── db.py
+│   └── models.py
+│
+├── modules/
+│   ├── authentication.py
+│   ├── accessibility.py
+│   ├── learning.py
+│   ├── quiz.py
+│   └── dashboard.py
+│
+├── templates/
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── dashboard.html
+│   ├── learning.html
+│   ├── quiz.html
+│   └── profile.html
+│
+├── static/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── script.js
+│   └── images/
+│
+├── uploads/
+│
+└── tests/
+    ├── test_app.py
+    └── test_ml.py
+```
+
+This is a suggested directory structure and should be adjusted according to the actual implementation.
+
+## 10. Installation and Setup
+
+### Prerequisites
+
+- Python 3.10 or later.
+- pip package manager.
+- Git.
+- VS Code or another Python IDE.
+- Modern web browser.
+
+### Step 1: Clone the Repository
 
 ```bash
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+git clone https://github.com/your-username/AdaptiveLearn-AI.git
+```
+
+### Step 2: Navigate to the Project Directory
+
+```bash
+cd AdaptiveLearn-AI
+```
+
+### Step 3: Create a Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+### Step 4: Activate the Virtual Environment
+
+For Windows:
+
+```powershell
+venv\Scripts\activate
+```
+
+For Linux or macOS:
+
+```bash
+source venv/bin/activate
+```
+
+### Step 5: Install Dependencies
+
+```bash
 pip install -r requirements.txt
-python -m ml_engine.generate_dataset                # synthetic development data
-python -m ml_engine.train_models                    # trains and evaluates the models
-python -m unittest discover -s tests -v             # run the test suite
-python app.py                                       # open http://127.0.0.1:5000
 ```
 
-The app starts without the models. If `ml_engine/saved_models/` is missing, every ML
-feature falls back to the rule-based baseline.
+### Step 6: Configure Environment Variables
 
-## What is implemented
+Create a `.env` file in the root directory if required.
 
-| Area | Status |
+Example:
+
+```env
+SECRET_KEY=your_secret_key
+DATABASE_URL=your_database_url
+AI_API_KEY=your_api_key
+```
+
+Do not upload confidential credentials or API keys to GitHub.
+
+### Step 7: Run the Application
+
+```bash
+python app.py
+```
+
+Open the application in your browser:
+
+```text
+http://127.0.0.1:8000
+```
+
+The port number should match the configuration in your application.
+
+### Step 8: Train the Machine Learning Model
+
+If model training is not performed automatically, run:
+
+```bash
+python ml/train_model.py
+```
+
+The trained model should be saved in the `models/` directory.
+
+## 11. Database Design
+
+The application can use the following database tables.
+
+### Users
+
+Stores user account information.
+
+- user_id
+- name
+- email
+- password_hash
+- role
+- created_at
+
+### Student Preferences
+
+Stores individual learning and accessibility preferences.
+
+- preference_id
+- user_id
+- font_size
+- contrast_mode
+- preferred_learning_format
+- accessibility_settings
+
+### Learning Materials
+
+Stores educational content.
+
+- material_id
+- title
+- subject
+- topic
+- difficulty_level
+- content_type
+- content_location
+
+### Quiz Results
+
+Stores student assessment results.
+
+- result_id
+- user_id
+- topic_id
+- score
+- attempts
+- incorrect_answers
+- completion_time
+
+### Learning Progress
+
+Stores student learning activity.
+
+- progress_id
+- user_id
+- topic_id
+- completion_status
+- time_spent
+- last_accessed
+
+### Recommendations
+
+Stores personalised learning recommendations.
+
+- recommendation_id
+- user_id
+- recommended_topic
+- recommended_format
+- recommended_difficulty
+- created_at
+
+## 12. Testing
+
+The application should be tested to ensure that all modules function correctly.
+
+| Testing Area | Test Description |
 |---|---|
-| Registration, login (hashed passwords), sessions, route protection | Done |
-| Accessibility: dyslexia font, text size, high contrast, reduced motion, focus mode, read-aloud, speech input | Done |
-| Three learning formats per topic (text, audio via TTS, illustrated visual lessons) | Done |
-| Searchable, filterable topic library with mastery progress | Done |
-| Adaptive quizzes: multiple choice and true/false, instant feedback with explanations, attempt tracking | Done |
-| Match-the-following and image-based questions | Not yet |
-| Progress tracking: mastery, revision flags, prerequisite-aware next topic | Done |
-| K-Means learning profiles, Random Forest support model, rule-based baseline, content-based ranking | Done, with evaluation |
-| Student dashboard with charts, goals, recommendations | Done |
-| AI tutor: explanations, summaries, practice questions from the library | Done (rule-based, no external API) |
-| Q&A over uploaded PDFs, Tesseract OCR | Not yet |
-| Teacher dashboard: uploads, quiz authoring, cohort reports | Not yet |
-| Lesson content for Operating Systems and Java | Not yet. Demo covers Python (4 topics), DBMS (3 topics), and Data Structures and Algorithms (3 topics) |
+| Authentication | Registration, login, and logout |
+| Accessibility | Font size, contrast, and keyboard navigation |
+| Learning Module | Lesson loading and content display |
+| ML Model | Prediction and recommendation accuracy |
+| Quiz Module | Question display, scoring, and feedback |
+| Database | Data storage and retrieval |
+| Dashboard | Progress and score display |
+| Security | Input validation and access control |
+| Compatibility | Browser and screen-size compatibility |
 
-## Architecture
+Accessibility testing should also include manual checks and, where possible, feedback from students with disabilities.
 
-```
-app.py                 Flask app factory
-config.py              Settings (environment overridable)
-backend/
-  db.py                SQLite schema, connection handling, initialisation
-  content.py           Sample subjects, topics, questions
-  auth.py              Password hashing, session login, login_required
-  services.py          Scoring, progress, feature building, adaptivity, dashboard, tutor
-  routes.py            Pages and JSON API
-ml_engine/
-  generate_dataset.py  Synthetic data generator (labelled data_source = synthetic)
-  preprocessing.py     Shared feature names and missing-value handling
-  train_models.py      Training, evaluation, saving
-  prediction.py        Loads Joblib artifacts, serves predictions
-  recommendation.py    Rule-based next topic, revision, content-based ranking
-frontend/
-  templates/           Jinja2 pages (Bootstrap 5)
-  static/css/, js/     Styling, accessibility, quiz and tutor behaviour
-  static/images/       Local lesson illustrations
-tests/test_app.py      unittest suite
-```
 
-## Machine learning
+## 14. Privacy and Security
 
-**Data.** `ml_engine/dataset/synthetic_student_attempts.csv` holds 4,200 rows (600 students
-× 7 topics). Every row is labelled `data_source = synthetic`. The generator uses a hidden
-ability variable, so the target is not a copy of an observed feature. This dataset tests
-that the pipeline works. It cannot show that the system helps real students.
+The platform may process personal learning information and accessibility preferences. Therefore, appropriate privacy and security measures should be followed.
 
-**K-Means (learning profiles).** Clusters students on four overall features: mean score,
-mean time, attempts per topic, and repeat-mistake rate. Clusters are named by mean score.
-Silhouette score is 0.24 at k = 4. It is highest at k = 2 (0.31), so k = 4 was chosen for
-interpretable profiles, not for cluster quality. The elbow results are in
-`ml_engine/saved_models/metrics.json`.
+- Use secure password hashing.
+- Protect user sessions.
+- Validate user inputs.
+- Restrict access to uploaded documents.
+- Store API keys and secret credentials securely.
+- Obtain consent before collecting learning activity.
+- Avoid collecting unnecessary personal information.
+- Provide appropriate controls for accessing and sharing student information.
 
-**Random Forest (support need).** Predicts whether a student needs extra support on a
-topic. Inputs: topic score, attempts, time, repeat rate, trend, preferred format, difficulty,
-K-Means cluster, and overall score. Evaluation uses a group split by student, so no student
-appears in both training and test data, plus 5-fold grouped cross-validation.
+## 15. Expected Outcome
 
-**Baseline.** A fixed rule: flag support when the topic average is below 60%. Every
-ML result is compared against this rule.
+AdaptiveLearn AI aims to provide an accessible and personalised digital learning environment for students with disabilities.
 
-Held-out results from the last training run (synthetic data):
+The expected outcomes include:
 
-| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
-|---|---|---|---|---|---|
-| Rule-based baseline | 0.574 | 0.508 | 0.970 | 0.667 | 0.888 |
-| Random Forest | 0.847 | 0.849 | 0.792 | 0.819 | 0.889 |
+- Improved access to educational content.
+- Personalised learning recommendations.
+- Flexible learning formats.
+- Customisable accessibility settings.
+- Better understanding through interactive assessments.
+- Continuous monitoring of learning progress.
+- A more inclusive digital learning experience.
 
-The Random Forest improves accuracy and F1 over the baseline. Its ROC-AUC is the same as
-the baseline's. The baseline's threshold was set once and not tuned. The synthetic
-generator was designed by the author, so these numbers reflect that design. Expect
-different results on real data.
+## 16. Future Scope
 
-**Adaptivity.** Difficulty starts at the topic's level. It rises after three strong answers
-(80%+) and falls after two weak answers (below 50%). If the support model gives a
-probability of 70% or more, difficulty drops one level. Recommendations are recalculated
-after every answer. Models are not retrained automatically.
+The project can be extended through improvements in Machine Learning algorithms, additional educational content, multilingual support, mobile compatibility, and integration with other educational platforms.
 
-## Known limitations
+Further development can also focus on improving recommendation accuracy through larger, consented, and appropriately evaluated learning datasets.
 
-- **Feature definitions differ between training and the app.** The synthetic generator
-  produces repeat-rate and attempt-count features directly. The app derives them from real
-  attempts with simple definitions. This is a train/serve gap for the Random Forest. Fix it
-  by generating the training data from the same attempt-level logic.
-- **Small real-data samples are noisy.** A student with two answers gives unstable features.
-  The models are most reliable after several weeks of use.
-- **Format suggestion is confounded.** Accuracy by format reflects choices students make
-  for themselves, not what format causes learning.
-- **Synthetic labels describe the simulation.** They are not clinical or educational
-  judgements about any person.
-- **Security.** Suitable for a demonstration deployment. Before real use, add CSRF
-  protection, rate limiting, email verification, HTTPS, and a real secret key.
-- **Consent.** Teacher access to student progress needs consent flows, which are not built.
-- **Dependencies.** Replace the sqlite3 layer with SQLAlchemy if you adopt the original
-  brief's stack. The schema is a direct mapping.
-- **Tutor scope.** Answers come from the lesson library by keyword overlap. It can
-  miss questions that use different words from the lessons.
+## 17. Project Information
 
-## Testing
+| Field | Details |
+|---|---|
+| Project Name | AdaptiveLearn AI |
+| Project Domain | Artificial Intelligence and Machine Learning |
+| Application Area | Educational Technology |
+| Primary Language | Python |
+| Backend | Flask |
+| ML Framework | Scikit-learn |
+| Database | SQLite / MySQL |
+| Project Type | Academic Project |
 
-`tests/test_app.py` covers registration and login, password hashing, route protection, quiz
-scoring and progress, the tutor, accessibility settings, prerequisite-aware recommendations,
-missing-value handling, and the full training pipeline with prediction.
+**Team Name:** code crushers
+**Developed By:** 
+Syeda Umima Fatima
+Aditi V Jaiswal
+Jessie Ranvita Kandikatla
+
+
+## 18. Conclusion
+
+AdaptiveLearn AI focuses on making digital education more accessible through personalised learning and Machine Learning-based recommendations.
+
+By combining accessibility customisation, adaptive assessments, multiple learning formats, and progress tracking, the platform aims to create a flexible learning environment that considers the individual requirements of students.
+
+The project promotes inclusive education by ensuring that students have greater control over how they access and interact with learning materials.
