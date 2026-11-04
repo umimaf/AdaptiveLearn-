@@ -1,7 +1,9 @@
-# AdaptiveLearn AI
-### An AI-Based Adaptive Learning Platform for Students with Disabilities
+# AdaptiveLearn 
+### An Adaptive Learning Platform for Students with Disabilities
 
 ## 1. Project Overview
+<img width="1910" height="957" alt="Screenshot 2026-11-04 191045" src="https://github.com/user-attachments/assets/4aacb989-fe68-48e3-bad3-d73461198a6b" />
+<img width="1917" height="961" alt="Screenshot 2026-11-04 191104" src="https://github.com/user-attachments/assets/3b5df461-4152-4605-9155-d2c9bb033070" />
 
 AdaptiveLearn AI is a Python and Machine Learning-based educational platform designed to provide personalised and accessible learning experiences for students with disabilities.
 
