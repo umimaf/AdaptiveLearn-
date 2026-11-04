@@ -17,8 +17,8 @@ body {
 }
 ::selection { background: #d5ece8; color: #173c50; }
 h1, h2, h3, h4, h5, h6 { color: var(--al-heading); }
-a:not(.topic-link) { color: var(--al-primary); }
-a:not(.topic-link):hover { color: var(--al-accent); }
+a:not(.topic-link):not(.btn) { color: var(--al-primary); }
+a:not(.topic-link):not(.btn):hover { color: var(--al-accent); }
 .navbar-brand { color: var(--al-heading) !important; }
 .form-label, .form-check-label { color: var(--al-heading); font-weight: 600; }
 .text-muted { color: var(--al-muted) !important; }
